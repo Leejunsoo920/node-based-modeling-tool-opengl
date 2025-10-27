@@ -84,6 +84,3 @@ Some parts of the code from OpenCloth are included for simulation features and p
 - Source: [https://github.com/mmmovania/opencloth](https://github.com/mmmovania/opencloth)
 - Email : mova0002@e.ntu.edu.sg
 - Licensed under: BSD 2-Clause License
-
-## Models & Animation
-- Character and animation assets from [Mixamo](https://www.mixamo.com/)
