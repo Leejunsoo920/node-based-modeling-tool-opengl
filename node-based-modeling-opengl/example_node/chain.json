@@ -1,0 +1,499 @@
+{
+    "saved_time": "20251027_052328",
+    "view_position": [
+        1576.1209716796875,
+        739.3881225585938
+    ],
+    "view_factor": 0.729002833366394,
+    "view_offset": [
+        2269.99658203125,
+        598.0160522460938
+    ],
+    "object_list": [
+        {
+            "name": "wall",
+            "path": "resources\\objects\\wall.obj"
+        }
+    ],
+    "nodes": [
+        {
+            "name": "Float",
+            "position": [
+                -522.0392456054688,
+                -83.9222412109375
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "float",
+                    "value": 0.019999999552965164
+                }
+            ]
+        },
+        {
+            "name": "Int",
+            "position": [
+                -132.23422241210938,
+                144.14605712890625
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "int",
+                    "value": 8
+                }
+            ]
+        },
+        {
+            "name": "Float",
+            "position": [
+                -634.8106689453125,
+                364.9482116699219
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "float",
+                    "value": 0.05999999865889549
+                }
+            ]
+        },
+        {
+            "name": "half_two_circles",
+            "position": [
+                288.0,
+                168.0
+            ],
+            "Draw": false
+        },
+        {
+            "name": "line",
+            "position": [
+                515.72412109375,
+                410.7997131347656
+            ],
+            "Draw": false
+        },
+        {
+            "name": "line_to_global_matrix",
+            "position": [
+                571.3172607421875,
+                721.7538452148438
+            ],
+            "Draw": false
+        },
+        {
+            "name": "gen_object",
+            "object_name": "circle",
+            "position": [
+                846.61328125,
+                535.713134765625
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "int",
+                    "value": 8
+                },
+                {
+                    "type": "float",
+                    "value": 0.006000000052154064
+                }
+            ]
+        },
+        {
+            "name": "sweep",
+            "position": [
+                1168.00732421875,
+                670.72705078125
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "int",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "name": "vec3",
+            "position": [
+                -1257.9046630859375,
+                1698.2568359375
+            ],
+            "Draw": true,
+            "initial_setting": [
+                {
+                    "type": "vec3",
+                    "value": [
+                        -0.6531167030334473,
+                        0.11277022212743759,
+                        -0.44466689229011536
+                    ]
+                },
+                {
+                    "type": "vec3",
+                    "value": [
+                        0.06022177264094353,
+                        -0.09553375095129013,
+                        -0.3907751441001892
+                    ]
+                },
+                {
+                    "type": "vec3",
+                    "value": [
+                        -0.17525328695774078,
+                        -0.40485385060310364,
+                        -0.037650853395462036
+                    ]
+                },
+                {
+                    "type": "vec3",
+                    "value": [
+                        0.0,
+                        0.0,
+                        0.7192498445510864
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "cubic_bezier_curve",
+            "position": [
+                935.1038818359375,
+                1499.328369140625
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "int",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "name": "Int",
+            "position": [
+                715.5535888671875,
+                2006.7105712890625
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "int",
+                    "value": 8
+                }
+            ]
+        },
+        {
+            "name": "arrange",
+            "position": [
+                1712.0,
+                1290.0
+            ],
+            "Draw": true
+        },
+        {
+            "name": "translation",
+            "position": [
+                1533.509033203125,
+                709.7587890625
+            ],
+            "Draw": false
+        },
+        {
+            "name": "mat4",
+            "position": [
+                1230.4990234375,
+                254.4390106201172
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "mat4",
+                    "value": [
+                        [
+                            1.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            1.0,
+                            0.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            1.0,
+                            0.0
+                        ],
+                        [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "setting",
+            "setting_name": "output_model",
+            "position": [
+                2476.0,
+                1501.9998779296875
+            ],
+            "Draw": false
+        },
+        {
+            "name": "shader",
+            "shader_name": "nomal shader",
+            "position": [
+                1502.0,
+                1677.86767578125
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "vec4",
+                    "value": [
+                        0.3225424885749817,
+                        0.5339365005493164,
+                        0.6521738767623901,
+                        0.7843137383460999
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Float",
+            "position": [
+                -740.5081787109375,
+                768.80712890625
+            ],
+            "Draw": false,
+            "initial_setting": [
+                {
+                    "type": "float",
+                    "value": -0.014999999664723873
+                }
+            ]
+        },
+        {
+            "name": "line_to_chain",
+            "position": [
+                1912.628173828125,
+                1933.724365234375
+            ],
+            "Draw": true
+        },
+        {
+            "name": "catenary_curve",
+            "position": [
+                1304.45263671875,
+                2025.547119140625
+            ],
+            "Draw": true,
+            "initial_setting": [
+                {
+                    "type": "int",
+                    "value": 0
+                }
+            ]
+        },
+        {
+            "name": "vec3_projection_to_mesh",
+            "position": [
+                -482.47406005859375,
+                1507.8717041015625
+            ],
+            "Draw": true
+        },
+        {
+            "name": "line",
+            "position": [
+                59.59315490722656,
+                1460.9998779296875
+            ],
+            "Draw": true
+        },
+        {
+            "name": "object",
+            "object_name": "wall",
+            "position": [
+                -768.5003051757813,
+                1102.8768310546875
+            ],
+            "Draw": true
+        },
+        {
+            "name": "result",
+            "position": [
+                614.2083129882813,
+                1102.2838134765625
+            ],
+            "Draw": false
+        },
+        {
+            "name": "subtract",
+            "position": [
+                180.2911376953125,
+                1223.92578125
+            ],
+            "Draw": false
+        },
+        {
+            "name": "setting",
+            "setting_name": "output_model",
+            "position": [
+                -358.09124755859375,
+                1034.7991943359375
+            ],
+            "Draw": false
+        }
+    ],
+    "links": [
+        [
+            0,
+            0,
+            3,
+            0
+        ],
+        [
+            1,
+            0,
+            3,
+            1
+        ],
+        [
+            2,
+            0,
+            3,
+            2
+        ],
+        [
+            3,
+            0,
+            4,
+            0
+        ],
+        [
+            4,
+            0,
+            5,
+            0
+        ],
+        [
+            5,
+            0,
+            7,
+            1
+        ],
+        [
+            13,
+            0,
+            12,
+            1
+        ],
+        [
+            6,
+            0,
+            7,
+            0
+        ],
+        [
+            7,
+            0,
+            12,
+            0
+        ],
+        [
+            12,
+            0,
+            11,
+            0
+        ],
+        [
+            11,
+            0,
+            14,
+            0
+        ],
+        [
+            15,
+            0,
+            14,
+            1
+        ],
+        [
+            17,
+            0,
+            11,
+            1
+        ],
+        [
+            18,
+            0,
+            17,
+            0
+        ],
+        [
+            19,
+            0,
+            20,
+            0
+        ],
+        [
+            8,
+            0,
+            19,
+            1
+        ],
+        [
+            2,
+            0,
+            23,
+            0
+        ],
+        [
+            23,
+            0,
+            22,
+            0
+        ],
+        [
+            23,
+            0,
+            18,
+            1
+        ],
+        [
+            16,
+            0,
+            23,
+            1
+        ],
+        [
+            21,
+            0,
+            24,
+            0
+        ],
+        [
+            24,
+            0,
+            19,
+            0
+        ],
+        [
+            20,
+            0,
+            18,
+            0
+        ]
+    ]
+}
