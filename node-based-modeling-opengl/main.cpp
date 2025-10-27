@@ -19,9 +19,6 @@ int main()
     scenectrl.set_shader("shader/texture.vs", "shader/texture.fs", "texture shader");
     scenectrl.set_shader("shader/light.vs", "shader/light.fs", "nomal shader");
 
-    //// charactor and animation
-    scenectrl.set_animation("animation/Fast Run/FastRun.dae", "run");
-
     //// ui object load  
     scenectrl.set_UIobject("resources/objects/ui_sphere.obj", "UI_sphere");
     scenectrl.set_UIobject("resources/objects/bone.obj", "bone");
