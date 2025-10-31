@@ -1,3 +1,9 @@
+// This code is adapted from LearnOpenGL by Joey de Vries
+// https://learnopengl.com
+// Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+// Twitter: https://twitter.com/JoeyDeVriez
+
+
 #ifndef CAMERA_H
 #define CAMERA_H
 

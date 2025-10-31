@@ -1,4 +1,9 @@
-﻿//model
+﻿// This code is adapted from LearnOpenGL by Joey de Vries
+// https://learnopengl.com
+// Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+// Twitter: https://twitter.com/JoeyDeVriez
+
+
 
 #ifndef MODEL_H
 #define MODEL_H
@@ -98,8 +103,6 @@ public:
 
 private:
 
-
-    // assimp 로 모델 로딩, 패스 정보 입력 
     void loadModel(std::string const& path)
     {
         // read file via ASSIMP

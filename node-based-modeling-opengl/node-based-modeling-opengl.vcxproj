@@ -183,7 +183,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Dependencies\external\animation.h" />
     <ClInclude Include="Dependencies\external\assimp\aabb.h" />
     <ClInclude Include="Dependencies\external\assimp\anim.h" />
     <ClInclude Include="Dependencies\external\assimp\camera.h" />

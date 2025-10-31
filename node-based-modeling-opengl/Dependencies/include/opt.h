@@ -18,7 +18,7 @@ public:
     void render_setting(Framebuffer& framebuffer){}
 
     //camera option 
-    void camera_move() { show_display.camera_move(); }
+    void camera_move() { show_display.camera_move(); } 
 
     //setting of ingui
     void imgui_set() { show_display.imgui_set(); }
