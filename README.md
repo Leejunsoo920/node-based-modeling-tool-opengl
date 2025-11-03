@@ -8,7 +8,6 @@ However, this project is part of another private project, so updates are irregul
 
 ⚠️ Note
 - It has not been confirmed whether this project can run in environments below C++17. The development environment uses C++20.
-- Shader-related features are currently being revised to address issues causing incorrect rendering.
 
 ## Example
 To help you understand how this program works, we provide an example **Chain** demonstration below.
