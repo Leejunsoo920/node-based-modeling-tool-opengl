@@ -203,98 +203,6 @@ private:
 };
 
 
-/*
-class SQPOptimizer {
-private:
-    nlopt::opt optimizer;
-    unsigned num_vars;
-    std::vector<double> lower_bounds;
-    std::vector<double> upper_bounds;
-
-    // Objective function
-    static double objective_function(const std::vector<double>& variables, std::vector<double>& grad, void* data) {
-        // Unpack data (user-defined context if needed)
-        // Example: energy calculation
-        double total_energy = 0.0;
-        // Compute total_energy here...
-
-        // If gradient is requested
-        if (!grad.empty()) {
-            // Compute gradient values here...
-        }
-
-        return total_energy;
-    }
-
-    // Constraint function
-    static void constraint_function(unsigned m, double* result, unsigned n, const double* variables, double* grad, void* data) {
-        // Unpack data (user-defined context if needed)
-        // m: number of constraints, n: number of variables
-
-        // Compute constraint values and populate result array
-        for (unsigned i = 0; i < m; ++i) {
-            result[i] = 0.0; // Example constraint value
-        }
-
-        // If gradient is requested
-        if (grad != nullptr) {
-            for (unsigned i = 0; i < m * n; ++i) {
-                grad[i] = 0.0; // Example gradient value
-            }
-        }
-    }
-
-public:
-    SQPOptimizer(unsigned num_variables)
-        : optimizer(nlopt::LD_SLSQP, num_variables), num_vars(num_variables) {
-        // Set default bounds to unbounded
-        lower_bounds.assign(num_vars, -HUGE_VAL);
-        upper_bounds.assign(num_vars, HUGE_VAL);
-        optimizer.set_lower_bounds(lower_bounds);
-        optimizer.set_upper_bounds(upper_bounds);
-    }
-
-    void set_bounds(const std::vector<double>& lower, const std::vector<double>& upper) {
-        if (lower.size() == num_vars && upper.size() == num_vars) {
-            lower_bounds = lower;
-            upper_bounds = upper;
-            optimizer.set_lower_bounds(lower_bounds);
-            optimizer.set_upper_bounds(upper_bounds);
-        }
-        else {
-            throw std::invalid_argument("Bounds size must match the number of variables.");
-        }
-    }
-
-    void set_objective() {
-        optimizer.set_min_objective(objective_function, nullptr);
-    }
-
-    void add_constraints(unsigned num_constraints, double tolerance = 1e-8) {
-        optimizer.add_equality_mconstraint(constraint_function, nullptr, std::vector<double>(num_constraints, tolerance));
-    }
-
-    std::vector<double> optimize(const std::vector<double>& initial_guess) {
-        if (initial_guess.size() != num_vars) {
-            throw std::invalid_argument("Initial guess size must match the number of variables.");
-        }
-
-        std::vector<double> result = initial_guess;
-        double minf;
-
-        try {
-            nlopt::result res = optimizer.optimize(result, minf);
-            std::cout << "Optimization successful! Minimum value: " << minf << std::endl;
-        }
-        catch (std::exception& e) {
-            std::cerr << "Optimization failed: " << e.what() << std::endl;
-        }
-
-        return result;
-    }
-};
-
-*/
 
 class Quaternion {
 public:
@@ -304,24 +212,6 @@ public:
     Quaternion(float w = 1.0f, float x = 0.0f, float y = 0.0f, float z = 0.0f)
         : w(w), x(x), y(y), z(z) 
     {}
-    /*
-    Quaternion(
-        const glm::vec3& v1)
-    {
-        glm::vec3 v0 = glm::vec3(0.0, 1.0, 0.0);
-
-        glm::vec3 normalize_v1 = glm::normalize(v1);
-        
-        glm::vec3 rotatation_axis = glm::cross(v0, v1);
-
-        float dot = glm::dot(v0, v1);
-
-
-
-
-    }
-    */
-
 
     //// make quaternion by only one vector
     //// in this function assume that we are located origin and toward y axis (0,1,0)
@@ -336,11 +226,9 @@ public:
 
 
 
-        // 회전축 계산
         glm::vec3 rotation_axis = -glm::cross(reference_axis, direction);
 
         float axis_length = glm::length(rotation_axis);
-        // 두 벡터의 내적을 이용하여 회전각 계산
         float cos_theta = glm::dot(reference_axis, direction);
         float angle = std::acos(glm::clamp(cos_theta, -1.0f, 1.0f)); // θ = arccos(cosθ)
 
@@ -462,18 +350,14 @@ public:
         return std::sqrt(w * w + x * x + y * y + z * z);
     }
 
-    // ﾁ､ｱﾔﾈｭ
+
     Quaternion normalize() const {
         float n = norm();
         return Quaternion(w / n, x / n, y / n, z / n);
     }
 
-    // ｿﾀﾀﾏｷｯ ｰ｢ｵｵｷﾎ ｺｯﾈｯ (Yaw-Pitch-Roll, ZYX ｼｭ)
     std::tuple<float, float, float> toEulerAngles() const {
-        // Yaw (Zﾃ・ﾈｸﾀ・
         float yaw = std::atan2(2.0f * (w * z + x * y), 1.0f - 2.0f * (y * y + z * z));
-
-        // Pitch (Yﾃ・ﾈｸﾀ・
         float sinp = 2.0f * (w * y - z * x);
         float pitch = 0.0f;
 
@@ -544,9 +428,7 @@ public:
     glm::mat4 quaternion_to_r_matrix() 
     {
         glm::mat4 matrix;
-        // 쿼터니언 요소
-        
-        // 4x4 회전행렬 계산
+
         matrix[0][0] = 1 - 2 * (y * y + z * z);
         matrix[0][1] = 2 * (x * y - w * z);
         matrix[0][2] = 2 * (x * z + w * y);
@@ -570,7 +452,6 @@ public:
         return matrix;
     }
 
-    // ﾃ箙ﾂ ｿﾀｹﾎｵ・
     friend std::ostream& operator<<(std::ostream& os, const Quaternion& q) {
         os << "(" << q.w << ", " << q.x << ", " << q.y << ", " << q.z << ")";
         return os;
@@ -580,18 +461,17 @@ public:
     {
         glm::mat4 matrix;
 
-        // x축 회전만 반대로 적용 (y, z 회전은 동일)
         matrix[0][0] = 1 - 2 * (y * y + z * z);
-        matrix[0][1] = -2 * (x * y - w * z); // 부호 반전
-        matrix[0][2] = -2 * (x * z + w * y); // 부호 반전
+        matrix[0][1] = -2 * (x * y - w * z); 
+        matrix[0][2] = -2 * (x * z + w * y); 
         matrix[0][3] = 0;
 
-        matrix[1][0] = -2 * (x * y + w * z); // 부호 반전
+        matrix[1][0] = -2 * (x * y + w * z); 
         matrix[1][1] = 1 - 2 * (x * x + z * z);
         matrix[1][2] = 2 * (y * z - w * x);
         matrix[1][3] = 0;
 
-        matrix[2][0] = -2 * (x * z - w * y); // 부호 반전
+        matrix[2][0] = -2 * (x * z - w * y); 
         matrix[2][1] = 2 * (y * z + w * x);
         matrix[2][2] = 1 - 2 * (x * x + y * y);
         matrix[2][3] = 0;
@@ -608,15 +488,14 @@ public:
     {
         glm::mat4 matrix;
 
-        // Y축 회전만 반대로 적용 (X, Z 회전은 동일)
         matrix[0][0] = 1 - 2 * (y * y + z * z);
         matrix[0][1] = 2 * (x * y - w * z);
-        matrix[0][2] = -2 * (x * z + w * y); // 부호 반전
+        matrix[0][2] = -2 * (x * z + w * y); 
         matrix[0][3] = 0;
 
         matrix[1][0] = 2 * (x * y + w * z);
         matrix[1][1] = 1 - 2 * (x * x + z * z);
-        matrix[1][2] = -2 * (y * z - w * x); // 부호 반전
+        matrix[1][2] = -2 * (y * z - w * x); 
         matrix[1][3] = 0;
 
         matrix[2][0] = 2 * (x * z - w * y);
@@ -634,8 +513,6 @@ public:
     glm::mat4 quaternion_to_r_matrix_z_inverse()
     {
         glm::mat4 matrix;
-
-        // Z축 회전만 반대로 적용 (X, Y 회전은 동일)
         matrix[0][0] = 1 - 2 * (y * y + z * z);
         matrix[0][1] = 2 * (x * y - w * z);
         matrix[0][2] = 2 * (x * z + w * y);
@@ -646,8 +523,8 @@ public:
         matrix[1][2] = 2 * (y * z - w * x);
         matrix[1][3] = 0;
 
-        matrix[2][0] = -2 * (x * z - w * y); // 부호 반전
-        matrix[2][1] = -2 * (y * z + w * x); // 부호 반전
+        matrix[2][0] = -2 * (x * z - w * y); 
+        matrix[2][1] = -2 * (y * z + w * x); 
         matrix[2][2] = 1 - 2 * (x * x + y * y);
         matrix[2][3] = 0;
 
@@ -716,7 +593,7 @@ public:
         Quaternion q2_copy = q2;
         std::cout << dot << std::endl;
         std::cout << glm::degrees(std::acos(dot)) << std::endl;
-        // ✅ 기존처럼 최단 경로로 돌고 싶다면 반전함
+
         if (!force_given_direction && dot <  0.0f)
         {
             dot = -dot;
@@ -726,7 +603,6 @@ public:
             q2_copy.w = -q2.w;
 
         }
-        // ❗force_given_direction == true일 경우, dot가 음수여도 그대로 사용 (지정된 방향 고수)
 
         const float EPSILON = 1e-6f;
 
@@ -976,7 +852,7 @@ public:
         const glm::vec3& ray_origin,
         const glm::vec3& box_min,
         const glm::vec3& box_max,
-        float* outT // ← 거리 결과를 저장할 포인터
+        float* outT 
     )
     {
         float tNear = -std::numeric_limits<float>::infinity();
@@ -1005,7 +881,7 @@ public:
             }
         }
 
-        if (outT) *outT = tNear; // 가장 가까운 교차 지점 거리 저장
+        if (outT) *outT = tNear; 
         return true;
     }
 

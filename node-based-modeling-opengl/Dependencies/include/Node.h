@@ -20,7 +20,7 @@ public:
     int object_count = 0;
 
     std::filesystem::path project_path = std::filesystem::current_path();
-    std::string current_file_path;
+    std::filesystem::path current_file_path;
 
 
 
@@ -86,8 +86,8 @@ private:
         const glm::vec3& camera_position);
     int select_node_count = 0;
 
-    void save_all_node_by_json(std::string save_path);
-    void load_all_node_by_json(std::string json_file_to_read);
+    void save_all_node_by_json(std::filesystem::path save_path);
+    void load_all_node_by_json(std::filesystem::path json_file_to_read);
 
 
 

@@ -899,7 +899,7 @@ void Node_manager::imgui_render()
 		if (ImGui::Button("save as"))
 		{
 			Utility utility;
-			std::string save_path = utility.OpenFileDialog();
+			std::filesystem::path save_path = utility.OpenFileDialog();
 			current_file_path = save_path;
 			Node_manager::save_all_node_by_json(save_path);
 		}
@@ -940,7 +940,7 @@ void Node_manager::imgui_render()
 			else
 			{
 				Utility utility;
-				std::string save_path = utility.OpenFileDialog();
+				std::filesystem::path save_path = utility.OpenFileDialog();
 				current_file_path = save_path;
 				Node_manager::save_all_node_by_json(save_path);
 
@@ -952,10 +952,10 @@ void Node_manager::imgui_render()
 		if (ImGui::Button("load node graph"))
 		{
 			Utility utility;
-			std::string load_path = utility.OpenFileDialog(); // get file path
+			std::filesystem::path load_path = utility.OpenFileDialog(); // get file path
 			current_file_path = load_path;
 			if (!load_path.empty()) {
-				if (load_path.size() >= 5 && load_path.substr(load_path.size() - 5) == ".json")
+				if (load_path.extension() == ".json")
 				{
 					Node_manager::load_all_node_by_json(load_path);
 				}
@@ -977,18 +977,18 @@ void Node_manager::imgui_render()
 		if (ImGui::Button("new object import"))
 		{
 			Utility utility;
-			std::string path = utility.OpenFileDialog(); // get file path
+			std::filesystem::path path = utility.OpenFileDialog(); // get file path
 
-			std::filesystem::path file_path(path); // saved file
-
-			if (!file_path.is_absolute())
+			if (!path.is_absolute())
 			{
-				file_path = project_path / file_path;
+				path = project_path / path;
 			}
-			if (std::filesystem::exists(file_path))
+			if (std::filesystem::exists(path))
 			{
 				std::string object_name = std::filesystem::path(path).stem().string();
-				set_pre_animation((path).c_str(), (object_name).c_str());
+
+				std::string path_utf8 = path.string();
+				set_pre_animation(path_utf8.c_str(), (object_name).c_str());
 			}
 
 		}
@@ -1217,7 +1217,7 @@ void Node_manager::imgui_node_property_render(
 
 
 
-void Node_manager::save_all_node_by_json(std::string save_path)
+void Node_manager::save_all_node_by_json(std::filesystem::path save_path)
 {
 	nlohmann::ordered_json j;
 
@@ -1358,9 +1358,9 @@ void Node_manager::save_all_node_by_json(std::string save_path)
 
 	std::stringstream ss;
 
-	if (save_path.size() < 5 || save_path.substr(save_path.size() - 5) != ".json")
+	if (save_path.extension() != ".json")
 	{
-		save_path += ".json";
+		save_path.replace_extension(".json");
 	}
 
 	ss << save_path;
@@ -1369,7 +1369,7 @@ void Node_manager::save_all_node_by_json(std::string save_path)
 
 }
 
-void Node_manager::load_all_node_by_json(std::string json_file_to_read)
+void Node_manager::load_all_node_by_json(std::filesystem::path json_file_to_read)
 {
 
 
@@ -1411,7 +1411,16 @@ void Node_manager::load_all_node_by_json(std::string json_file_to_read)
 			if (std::filesystem::exists(file_path))
 			{
 
-				set_pre_animation((file_path.string()).c_str(), (object_name).c_str());
+				std::filesystem::path temp = std::filesystem::temp_directory_path() / file_path.filename();
+
+				std::filesystem::copy_file(
+					file_path,
+					temp,
+					std::filesystem::copy_options::overwrite_existing
+				);
+
+
+				set_pre_animation((temp.string()).c_str(), (object_name).c_str());
 
 			}
 			else

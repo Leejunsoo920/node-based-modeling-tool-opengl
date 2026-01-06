@@ -20,13 +20,10 @@ public:
 
     Utility() {}
 
-    std::string OpenFileDialog() 
+    std::filesystem::path OpenFileDialog() 
     {
-        OPENFILENAME ofn;
-        //HWND hwnd;
+        OPENFILENAME ofn; // 
 
-
-        TCHAR filePathName[260] = L"";
         TCHAR lpstrFile[260] = L"";
         static TCHAR filter[] = L"All Files\0*.*\0\0";
 
@@ -41,12 +38,10 @@ public:
 
         if (GetOpenFileName(&ofn) != 0)
         {
-            return to_string(ofn.lpstrFile);
-
-
+            return std::filesystem::path(ofn.lpstrFile);
         }
 
-        return "";
+        return {};
     }
 
     std::string SelectFolder()
@@ -68,6 +63,7 @@ public:
 
 
 private:
+    /*
     std::string to_string(const std::wstring& wstr)
     {
         if (wstr.empty()) return std::string();
@@ -85,7 +81,7 @@ private:
         return str;
     }
 
-
+    */
 
 
 
