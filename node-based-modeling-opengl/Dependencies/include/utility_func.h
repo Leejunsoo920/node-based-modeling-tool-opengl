@@ -20,12 +20,12 @@ public:
 
     Utility() {}
 
-    std::filesystem::path OpenFileDialog() 
+    std::filesystem::path OpenFileDialog()
     {
         OPENFILENAME ofn; // 
 
-        TCHAR lpstrFile[260] = L"";
-        static TCHAR filter[] = L"All Files\0*.*\0\0";
+        TCHAR lpstrFile[260] = TEXT("");
+        static TCHAR filter[] = TEXT("All Files\0*.*\0\0");
 
         memset(&ofn, 0, sizeof(OPENFILENAME));
         ofn.lStructSize = sizeof(OPENFILENAME);
@@ -34,7 +34,7 @@ public:
         ofn.lpstrFilter = filter;
         ofn.lpstrFile = lpstrFile;
         ofn.nMaxFile = 260;
-        ofn.lpstrInitialDir = L".";
+        ofn.lpstrInitialDir = TEXT(".");
 
         if (GetOpenFileName(&ofn) != 0)
         {
@@ -47,7 +47,7 @@ public:
     std::string SelectFolder()
     {
         BROWSEINFO bi = {};
-        bi.lpszTitle = L"Select Folder";
+        bi.lpszTitle = TEXT("Select Folder");
         LPITEMIDLIST pidl = SHBrowseForFolder(&bi);
         if (!pidl) return "";
 
