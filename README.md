@@ -56,16 +56,26 @@ Save files are stored in **JSON** format.
 A keyframe editing feature is currently being implemented using ImGizmo’s ImSequencer.
 At this stage, the key_frame_sequence nodes support output for float types only.
 
-### Build Instructions (Windows)
-
+## Install (Windows)
+You can install the project using Cmake
 
 Clone the repository and move to the project root directory:
 ```bash
 cd node-based-modeling-opengl
+```
+
+```bash
 mkdir build
+```
+
+```bash
 cd build
+```
+
+```bash
 cmake .. -G "Visual Studio 17 2022"
 ```
+
 ## Development Environment
 - **OS:** Windows 10  
 - **CPU:** AMD Ryzen 7 3700X  
